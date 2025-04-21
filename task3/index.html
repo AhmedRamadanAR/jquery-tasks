@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <title>Task3</title>
+
+</head>
+<body style="text-align: start; padding-top: 80px; position:relative">
+
+<img id="small-img" src="img1.jpg" style="width: 120px ; transform:rotate(0deg)" />
+
+<script>
+  $(document).ready(function () {
+    let angle = 0;
+    let rotating = false;
+    let interval;
+
+    $("#small-img").click(function () {
+        if (rotating) return;
+
+      rotating = true;
+      interval = setInterval(function () {
+        angle += 5;
+        $("#small-img").css("transform", "rotate(" + angle + "deg)");
+      }, 20);
+
+      $("#small-img").animate({
+        width: "500px",
+        top: "0px",
+        left: "0px"
+      }, 2500
+
+      , function () {
+        clearInterval(interval);
+        $("#small-img").css("transform", "rotate(0deg)");
+        rotating = false;
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

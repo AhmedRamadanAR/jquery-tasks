@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Moving Car</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+    img {
+      position: absolute;
+      left: 0px;
+      top:0px
+    }
+    #positionText {
+      position: absolute;
+      top: 120px;
+      left: 0px;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+  <img  src="12.gif" alt="Race Car">
+  <p id="positionText">&lt;img src="12.gif" style="left: 0px"/&gt;</p>
+
+  
+  <script>
+ $(document).ready(function(){
+      const $car = $('img');
+      const $text = $('#positionText');
+
+      $car.animate({ left: "+=500px" }, {
+        duration: 5000,
+        easing: "linear",
+        step: function(now) {
+          $text.html('&lt;img src="12.gif" style="left: ' + Math.round(now) + 'px"/&gt;');
+          $text.css('left', now + 'px'); 
+        }
+      });
+    });
+  </script>
+</body>
+</html>
